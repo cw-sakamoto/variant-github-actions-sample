@@ -12,8 +12,7 @@ tasks:
       EOF
       echo "range event"
       {{- range $k, $v := get "event" }}
-      echo {{ $k }}
-      echo {{ $v }}
+      echo "key: {{ $k }} value: {{ $v }}"
       {{- end }}
   fail:
     script: |
