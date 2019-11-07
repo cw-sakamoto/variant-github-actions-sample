@@ -6,11 +6,13 @@ tasks:
       default: "/github/workflow/event.json"
     script: |
       echo foo!
-      #cat $GITHUB_EVENT_PATH
-      #echo {{ get "event" }}
       cat <<EOF
       {{ get "event" | dig "comment" }}
       EOF
+      {{- range $k, $v := get "event" }}
+      echo $k
+      echo $v
+      {{- end }}
   fail:
     script: |
       echo simulated failure
