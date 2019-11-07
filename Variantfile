@@ -19,6 +19,7 @@ tasks:
   foo:
     script: |
       echo foo!
+      cat $GITHUB_EVENT_PATH
   fail:
     script: |
       echo simulated failure
