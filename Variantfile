@@ -1,26 +1,16 @@
-parameters:
-- name: event
-  type: object
-  default: "/github/workflow/event.json"
-script: |
-  cat <<EOF
-  {{ get "event" | toYaml }}
-  EOF
-parameters:
-- name: event
-  type: object
-  default: "/github/workflow/event.json"
-script: |
-  cat <<EOF
-  {{ get "event" | toYaml }}
-  EOF
-
 tasks:
   foo:
+    parameters:
+    - name: event
+      type: object
+      default: "/github/workflow/event.json"
     script: |
       echo foo!
       cat $GITHUB_EVENT_PATH
       echo {{ get "event" }}
+      cat <<EOF
+      {{ get "event" | toYaml }}
+      EOF
   fail:
     script: |
       echo simulated failure
