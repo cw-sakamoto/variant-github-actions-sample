@@ -20,7 +20,7 @@ tasks:
     script: |
       echo foo!
       cat $GITHUB_EVENT_PATH
-      echo {{ get "event.issue.body" }}
+      echo {{ get "event" }}
   fail:
     script: |
       echo simulated failure
