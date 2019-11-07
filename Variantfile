@@ -6,12 +6,14 @@ tasks:
       default: "/github/workflow/event.json"
     script: |
       echo foo!
+      echo "dig .event.comment"
       cat <<EOF
       {{ get "event" | dig "comment" }}
       EOF
+      echo "range event"
       {{- range $k, $v := get "event" }}
-      echo $k
-      echo $v
+      echo {{ $k }}
+      echo {{ $v }}
       {{- end }}
   fail:
     script: |
