@@ -14,6 +14,14 @@ tasks:
       {{- range $k, $v := get "event" }}
       echo "key: {{ $k }} value: {{ $v }}"
       {{- end }}
+
+      echo "cat event.comment"
+      cat <<EOF
+      {{ get "event.comment" }}
+      EOF
+
+      echo "echo event.comment"
+      echo {{ get "event.comment" }}
   fail:
     script: |
       echo simulated failure
